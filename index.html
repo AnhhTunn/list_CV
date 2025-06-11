@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công việc</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <h1>Thêm công việc</h1>
+        <div>
+            <input type="text" name="txtCV" id="txtCV" placeholder="Nhập công việc..." required>
+            <select name="cbbStatus" id="cbbStatus">
+                <option value="All">All</option>
+                <option value="Todo">Todo</option>
+                <option value="Done">Done</option>
+                <option value="Doing">Doing</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Reopen">Reopen</option>
+            </select>
+            <button id="btnSearch" onclick="btnSearchItem()">Tìm kiếm</button>
+        </div>
+        <div class="status">
+            Status:
+            <label class="item_status" for="status">Todo<input type="radio" name="status" id="status"
+                    value="Todo"></label>
+            <label class="item_status" for="status">Done<input type="radio" name="status" id="status"
+                    value="Done"></label>
+            <label class="item_status" for="status">Doing<input type="radio" name="status" id="status"
+                    value="Doing"></label>
+            <label class="item_status" for="status">Resolved<input type="radio" name="status" id="status"
+                    value="Resolved"></label>
+            <label class="item_status" for="status">Reopen<input type="radio" name="status" id="status"
+                    value="Reopen"></label>
+        </div>
+        <div class="list_btn">
+            <button id="btnAdd" onclick="btnAddItem()">Add</button>
+            <button id="btnEdit" onclick="btnEditItem()">Edit</button>
+        </div>
+        <hr>
+        <div class="list_CV">
+            <table>
+                <caption>Thông tin công việc</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody id="display_item">
+
+                </tbody>
+            </table>
+        </div>
+        <dialog id="userDialog">
+            <div class="loader"></div>
+        </dialog>
+        <div id="phan_trang">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
