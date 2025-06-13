@@ -1,181 +1,50 @@
 * {
     box-sizing: border-box;
 }
-
-.main {
-    width: 420px;
-    padding: 10px;
-    background-color: cadetblue;
-    border-radius: 20px;
-    margin: auto;
-}
-
-.main input[type="text"] {
-    outline: none;
-    width: 200px;
-    height: 30px;
-    padding-left: 10px;
-    border-radius: 10px;
+dialog {
+    position: fixed;
+    background: transparent;
     border: none;
+    padding: 0;
+    overflow: visible;
+    z-index: 9999;
 }
-
-.main #btnSearch {
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-}
-
-.main select {
-    width: 80px;
-    height: 30px;
-    border-radius: 10px;
-    outline: none;
-}
-
-.main .item_status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main .status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.main .list_btn {
-    display: flex;
-    align-items: center;
-    gap: 20px
-}
-
-.main .list_btn button {
-    width: 100px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.main .list_btn button:nth-child(1) {
-    color: black;
-    font-size: 15px;
-    font-weight: bold
-}
-
-.main .list_btn button:nth-child(1):hover,
-.main .list_btn button:nth-child(2):hover {
-    transform: scale(1.1);
-}
-
-.main .list_btn button:nth-child(2) {
-    background: linear-gradient(to right, #654321, #d2b48c);
-    color: white;
-    font-size: 15px;
-    font-weight: bold
-}
-
-#btnEdit {
-    display: none;
-}
-
-.main .list_CV table {
-    border-collapse: collapse;
-    border: 1px solid black;
-    width: 100%;
-}
-
-.main .list_CV table caption {
-    margin: 10px 0 20px 0;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.main .list_CV table tr,
-.main .list_CV table td {
-    border: 1px solid black;
-    text-align: left;
-    padding: 10px;
-}
-
-.main .list_CV table th {
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-}
-
-.list_btn_js {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.list_btn_js button {
-    border: none;
-    border-radius: 3px;
-    width: 70px;
-    height: 30px;
-    color: black;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.list_btn_js button:nth-child(1):hover,
-.list_btn_js button:nth-child(2):hover {
-    transform: scale(1.1);
-}
-
-/* dialog */
 
 .loader {
-    width: 60px;
-    aspect-ratio: 2;
-    --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
-    background: 
-      var(--_g) 0%   50%,
-      var(--_g) 50%  50%,
-      var(--_g) 100% 50%;
-    background-size: calc(100%/3) 50%;
-    animation: l3 1s infinite linear;
-  }
-  @keyframes l3 {
-      20%{background-position:0%   0%, 50%  50%,100%  50%}
-      40%{background-position:0% 100%, 50%   0%,100%  50%}
-      60%{background-position:0%  50%, 50% 100%,100%   0%}
-      80%{background-position:0% 50%, 50%  50%,100% 100%}
-  }
-
-dialog {
-    border: none;
-    outline: none;
-    background: transparent;
+    width: 15px;
+    aspect-ratio: 1;
+    position: relative;
+    display: block;
     margin: auto;
-    /* margin: 0; */
-}
-#phan_trang{
-    margin: 10px 0;
-}
-#phan_trang button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: none;
-    background: #f0f0f0;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background 0.3s;
 }
 
-#phan_trang button.active {
-    background: #007bff;
-    color: white;
-    font-weight: bold;
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #000;
 }
 
-#phan_trang button:hover {
-    background: #ddd;
+.loader::before {
+    box-shadow: -25px 0;
+    animation: l8-1 1s infinite linear;
 }
 
+.loader::after {
+    transform: rotate(0deg) translateX(25px);
+    animation: l8-2 1s infinite linear;
+}
 
+@keyframes l8-1 {
+    100% {
+        transform: translateX(25px);
+    }
+}
+
+@keyframes l8-2 {
+    100% {
+        transform: rotate(-180deg) translateX(25px);
+    }
+}

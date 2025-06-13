@@ -1,70 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công việc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Call API</title>
 </head>
 
 <body>
-    <div class="main">
-        <h1>Thêm công việc</h1>
-        <div>
-            <input type="text" name="txtCV" id="txtCV" placeholder="Nhập công việc..." required>
-            <select name="cbbStatus" id="cbbStatus">
-                <option value="All">All</option>
-                <option value="Todo">Todo</option>
-                <option value="Done">Done</option>
-                <option value="Doing">Doing</option>
-                <option value="Resolved">Resolved</option>
-                <option value="Reopen">Reopen</option>
-            </select>
-            <button id="btnSearch" onclick="btnSearchItem()">Tìm kiếm</button>
-        </div>
-        <div class="status">
-            Status:
-            <label class="item_status" for="status">Todo<input type="radio" name="status" id="status"
-                    value="Todo"></label>
-            <label class="item_status" for="status">Done<input type="radio" name="status" id="status"
-                    value="Done"></label>
-            <label class="item_status" for="status">Doing<input type="radio" name="status" id="status"
-                    value="Doing"></label>
-            <label class="item_status" for="status">Resolved<input type="radio" name="status" id="status"
-                    value="Resolved"></label>
-            <label class="item_status" for="status">Reopen<input type="radio" name="status" id="status"
-                    value="Reopen"></label>
-        </div>
-        <div class="list_btn">
-            <button id="btnAdd" onclick="btnAddItem()">Add</button>
-            <button id="btnEdit" onclick="btnEditItem()">Edit</button>
-        </div>
-        <hr>
-        <div class="list_CV">
-            <table>
-                <caption>Thông tin công việc</caption>
-                <thead>
+    <div class="container mt-4">
+        <h4 class="text-center mb-4">Thêm sản phẩm</h4>
+        <form id="formProduct" class="border p-4 rounded shadow">
+            <div class="mb-1">
+                <label for="txtID" class="form-label">ID:</label>
+                <input type="text" class="form-control" id="txtID" disabled>
+            </div>
+
+            <div class="mb-1">
+                <label for="txtName" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="txtName">
+            </div>
+
+            <div class="mb-1">
+                <label for="txtTitle" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="txtTitle">
+            </div>
+            <div class="mb-1">
+                <label for="txtPrice" class="form-label">Price:</label>
+                <input type="number" class="form-control" id="txtPrice">
+            </div>
+
+            <div class="mb-1">
+                <label for="txtEXP" class="form-label">Expiry Date:</label>
+                <input type="date" class="form-control" id="txtEXP">
+            </div>
+
+            <div class="mb-1 d-flex gap-5">
+                <label class="form-label">Made in:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="madein" value="Việt Nam" id="vietnam">
+                    <label class="form-check-label" for="vietnam">Việt Nam</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="madein" value="Trung Quốc" id="china">
+                    <label class="form-check-label" for="china">Trung Quốc</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="madein" value="Nhật Bản" id="japan">
+                    <label class="form-check-label" for="japan">Nhật Bản</label>
+                </div>
+            </div>
+
+            <div class="d-flex gap-5">
+                <button type="button" class="btn btn-success" id="btnSave">Save</button>
+                <button type="reset" class="btn btn-secondary" id="btnClear">Clear</button>
+            </div>
+        </form>
+    </div>
+    <div class="container mt-4">
+        <h4 class="text-center mb-3">Danh sách sản phẩm</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center">
+                <thead class="table-dark">
                     <tr>
-                        <th>Name</th>
-                        <th>Status</th>
+                        <th>ID</th>
+                        <th>Name Product</th>
+                        <th>Title Product</th>
+                        <th>Price Product</th>
+                        <th>Expiry Date</th>
+                        <th>Made In</th>
                         <th>Option</th>
                     </tr>
                 </thead>
                 <tbody id="display_item">
-
                 </tbody>
             </table>
         </div>
-        <dialog id="userDialog">
-            <div class="loader"></div>
-        </dialog>
-        <div id="phan_trang">
-        </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <dialog id="loadingDialog">
+        <div class="loader"></div>
+    </dialog>
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
